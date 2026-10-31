@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Kak Naya ❤️</title><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a102b, #39204d, #17152f);
+    color: white;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    padding: 30px;
+    max-width: 400px;
+}
+
+.cake {
+    font-size: 85px;
+    animation: bounce 2s infinite;
+}
+
+h1 {
+    color: #ffb6d9;
+    font-size: 35px;
+    margin: 20px 0;
+}
+
+p {
+    color: #e5d8f5;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+button {
+    background: #ff85b8;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff85b8;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 12px;
+    color: #bda9d4;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* LETTER */
+
+.gift-box {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+.letter {
+    background: #fff0f6;
+    color: #44223d;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: appear 0.5s ease;
+}
+
+.letter h2 {
+    margin-bottom: 20px;
+    color: #d64d91;
+}
+
+.letter p {
+    color: #44223d;
+    text-align: left;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+</style></head><body><div class="container"><div class="cake">🎂</div>
+
+<h1>Happy Birthday!</h1>
+
+<p>
+    ciee ada yang ultah nih!
+    jujur aja sebenarnya ini yg bikin aku begadang semalam karena aku harus kodingin ini
+    dan ini baru selesai kayak sekitar jam 12 malam:D oh iya aku ada sedikit ucapan buat kakak di buka yah ❤️
+</p>
+
+<button onclick="openGift()">
+    Open Your Gift 🎁
+</button>
+
+<div class="footer">
+    Made with ❤️ just for you.
+</div>
+
+</div><!-- SURAT ULANG TAHUN --><div id="giftBox" class="gift-box"><div class="letter">
+
+    <h2>💌 A Special Letter</h2>
+
+    <p id="typingText"></p>
+
+    <button onclick="closeGift()">
+        Close 💗
+    </button>
+
+</div>
+
+</div><script>
+
+const message = `Dear Kak Naya,
+
+Happy Birthday, Kak! 🎂❤️
+
+Selamat bertambah usia, Kak. Semoga di hari yang spesial ini, Kakak selalu dikelilingi oleh kebahagiaan, orang-orang baik, dan hal-hal indah yang mungkin selama ini Kakak harapkan.
+
+Aku mungkin nggak bisa memberikan hadiah yang mewah atau sesuatu yang istimewa secara langsung. Tapi, lewat halaman kecil ini, aku ingin menyampaikan sesuatu yang mungkin nggak selalu bisa aku ungkapkan dengan kata-kata.
+
+Terima kasih sudah hadir dan menjadi salah satu orang yang memberikan warna dalam hari-hariku.
+
+Terima kasih karena sudah mau mendengarkan cerita-ceritaku, menghadapi tingkahku, dan membuatku merasa bahwa aku punya seseorang yang bisa kuanggap sebagai kakak.
+
+Mungkin kita hanya mengenal satu sama lain melalui layar, mungkin jarak membuat kita nggak bisa bertemu secara langsung, tetapi bukan berarti kehadiran seseorang menjadi nggak berarti.
+
+Kak, aku harap di usia yang baru ini, Kakak bisa lebih banyak tersenyum daripada bersedih.
+
+Semoga segala urusan Kakak dipermudah, segala impian Kakak didekatkan dengan kenyataan, dan segala usaha yang selama ini Kakak lakukan bisa membuahkan hasil yang indah.
+
+Kalau suatu hari keadaan terasa melelahkan, jangan lupa untuk beristirahat. Kakak juga manusia yang berhak merasa lelah, berhak bahagia, dan berhak mendapatkan hal-hal baik.
+
+Teruslah menjadi Naya yang aku kenal. Nggak perlu menjadi sempurna untuk menjadi seseorang yang berharga.
+
+Sekali lagi, selamat ulang tahun, Kak Naya!
+
+Thank you for being my big sister.
+
+With love,
+Your little brother. ❤️`;
+
+let index = 0;
+let typing;
+
+function openGift() {
+
+    const box = document.getElementById("giftBox");
+    const text = document.getElementById("typingText");
+
+    box.style.display = "flex";
+
+    text.innerHTML = "";
+    index = 0;
+
+    clearInterval(typing);
+
+    typing = setInterval(() => {
+
+        if (index < message.length) {
+
+            text.textContent += message.charAt(index);
+
+            index++;
+
+        } else {
+
+            clearInterval(typing);
+
+        }
+
+    }, 45);
+
+}
+
+function closeGift() {
+
+    document.getElementById("giftBox").style.display = "none";
+
+    clearInterval(typing);
+
+}
+
+</script></body>
+</html>
